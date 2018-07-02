@@ -2,6 +2,7 @@ package com.tengdw.rule;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;
+import java.util.Iterator;
 
 /**
  * 6. 消除过期的对象引用

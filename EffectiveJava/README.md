@@ -1,5 +1,5 @@
 ## Effective Java 第二版
-总共讲了78条规则，指导我们编写出更规范的代码
+总共讲了78条规则，指导我们编写出更规范的代码。
 > 目录
 #### 1. 考虑静态工厂方法代替构造器
 
@@ -51,37 +51,42 @@ public class utilityClass {
 - 使所有的域都成为私有的
 - 确保对于任何可变组件的互斥访问
 
-#### 16. 复合优先于继承
+#### 16. [复合优先于继承](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule16.java)
 
-#### 17. 
+#### 17. 要么为继承而设计，并提供文档说明，要么就禁止继承
 
-#### 18. 
+#### 18. 接口优于抽象类
+- 现有的类可以很容易被更新，以实现新的接口
+- 接口是定义 mixin（混合类型）的理想选择
+- 接口允许我们构造非层次结构的类型框架
 
-#### 19. 
+#### 19. 接口只用于定义类型
+*常量接口模式是对接口的不良使用，JDK 源码中也用这种写法*
 
-#### 20. 
+#### 20. [类层次优于标签类](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule20.java)
 
-#### 21. 
+#### 21. 用函数对象表示策略
 
-#### 22. 
+#### 22. 优先考虑静态成员类
 
-#### 23. 
+#### 23. 请不要再新代码中使用原生态类型
 
-#### 24. 
+#### 24. 消除非受检警告
+就是 `@SuppressWarnings("unchecked)` 那个注解
 
-#### 25. 
+#### 25. 列表优先于数组
 
-#### 26. 
+#### 26. 优先考虑泛型
 
-#### 27. 
+#### 27. 优先考虑泛型方法
 
-#### 28. 
+#### 28. 利用有限制通配符来提升 API 的灵活性
 
-#### 29. 
+#### 29. 优先考虑类型安全的异构容器
 
-#### 30. 
+#### 30. [用 enum 代替 int 常量](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule30.java)
 
-#### 31. 
+#### 31. 用实例域代替序数
 
 #### 32. 
 
