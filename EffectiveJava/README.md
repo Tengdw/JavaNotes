@@ -3,9 +3,9 @@
 > 目录
 #### 1. 考虑静态工厂方法代替构造器
 
-#### 2. [遇到多个构造器参数时要考虑用构建器](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule2.java)
+#### 2. [遇到多个构造器参数时要考虑用构建器](/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule2.java)
 
-#### 3. [用私有构造器或者枚举类型强化 Singleton 属性](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule3.java)
+#### 3. [用私有构造器或者枚举类型强化 Singleton 属性](/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule3.java)
 
 #### 4. 通过私有构造器强化不可实例化能力
 
