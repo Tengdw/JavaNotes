@@ -21,7 +21,7 @@ public class utilityClass {
 ```
 #### 5. 避免创建不必要的对象
 
-#### 6. [消除过期的对象引用](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule6.java)
+#### 6. [消除过期的对象引用](/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule6.java)
 
 #### 7. 避免使用终结方法 finalize()
 
@@ -51,7 +51,7 @@ public class utilityClass {
 - 使所有的域都成为私有的
 - 确保对于任何可变组件的互斥访问
 
-#### 16. [复合优先于继承](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule16.java)
+#### 16. [复合优先于继承](/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule16.java)
 
 #### 17. 要么为继承而设计，并提供文档说明，要么就禁止继承
 
@@ -63,7 +63,7 @@ public class utilityClass {
 #### 19. 接口只用于定义类型
 *常量接口模式是对接口的不良使用，JDK 源码中也用这种写法*
 
-#### 20. [类层次优于标签类](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule20.java)
+#### 20. [类层次优于标签类](/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule20.java)
 
 #### 21. 用函数对象表示策略
 
@@ -84,7 +84,7 @@ public class utilityClass {
 
 #### 29. 优先考虑类型安全的异构容器
 
-#### 30. [用 enum 代替 int 常量](https://github.com/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule30.java)
+#### 30. [用 enum 代替 int 常量](/Tengdw/JavaNotes/blob/master/EffectiveJava/src/main/java/com/tengdw/rule/rule30.java)
 
 #### 31. 用实例域代替序数
 
