@@ -1,6 +1,5 @@
 package com.tengdw;
 
-import org.junit.Test;
 
 public class AppTest {
 
