@@ -6,11 +6,16 @@ package com.tengdw.rule;
  */
 public class rule2 {
 
-    NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8)
-            .calories(100)
-            .sodium(35)
-            .carbohydrate(27)
-            .build();
+
+    public static void main(String[] args) {
+        NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8)
+                .calories(100)
+                .sodium(35)
+                .carbohydrate(27)
+                .build();
+        System.out.println(cocaCola);
+
+    }
 }
 
 class NutritionFacts{
@@ -38,19 +43,19 @@ class NutritionFacts{
         }
 
         public Builder calories(int val){
-            calories = val;
+            this.calories = val;
             return this;
         }
         public Builder fat(int val){
-            fat = val;
+            this.fat = val;
             return this;
         }
         public Builder sodium(int val){
-            sodium = val;
+            this.sodium = val;
             return this;
         }
         public Builder carbohydrate(int val){
-            carbohydrate = val;
+            this.carbohydrate = val;
             return this;
         }
 
