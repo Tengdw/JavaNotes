@@ -9,7 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ConcurrentProgramDesign</artifactId>
+    <artifactId>Java8InAction</artifactId>
 
-    <name>ConcurrentProgramDesign</name>
+    <name>Java8InAction</name>
+    <url>http://www.example.com</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
