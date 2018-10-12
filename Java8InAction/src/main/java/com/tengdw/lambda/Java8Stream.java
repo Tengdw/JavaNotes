@@ -105,11 +105,27 @@ public class Java8Stream {
             System.out.println("The menu is (somewhat) vegetarian friendly!!");
         }
         /*检查谓词是否匹配所有元素*/
-        boolean b = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
+        boolean b1 = menu.stream().allMatch(dish -> dish.getCalories() < 1000);
         //noneMatch与allMatch相反
-        boolean b1 = menu.stream().noneMatch(dish -> dish.getCalories() < 1000);
+        boolean b2 = menu.stream().noneMatch(dish -> dish.getCalories() < 1000);
 
         /*查找元素*/
         Optional<Dish> any = menu.stream().filter(Dish::isVegetarian).findAny();
+        /*查找第一个元素*/
+        List<Integer> someNumbers = Arrays.asList(1, 2, 3, 4, 5);
+        Optional<Integer> firstSquareDivisibleByThree =
+                someNumbers.stream()
+                        .map(x -> x * x)
+                        .filter(x -> x % 3 == 0)
+                        .findFirst(); // 9
+
+        /**规约*/
+        //元素求和
+        Integer sum1 = numbers.stream()
+                .reduce(0, (a, b) -> a + b);
+        Integer reduce2 = numbers.stream().reduce(0, Integer::sum);
+        System.out.println(sum1);
+        //求最大值
+        Integer max = numbers.stream().reduce(0, Integer::max);
     }
 }
