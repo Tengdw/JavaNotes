@@ -11,8 +11,8 @@
     <modules>
         <module>EffectiveJava</module>
         <module>ConcurrentProgramDesign</module>
-        <module>Sort</module>
-        <module>Sort</module>
+        <module>Algorithm</module>
+        <module>NettyChatroom</module>
         <module>Java8InAction</module>
     </modules>
 

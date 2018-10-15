@@ -24,7 +24,7 @@ public class Java8Stream {
         /**并行流*/
         List<String> collect2 = menu.parallelStream()
                 .filter(dish -> dish.getCalories() > 400) //过滤卡路里大于400的
-                .sorted(Comparator.comparingInt(Dish::getCalories)) // 按卡路里顺序
+                .sorted(Comparator.comparing(Dish::getCalories)) // 按卡路里顺序
                 .map(Dish::getName) //提取菜名
                 .collect(Collectors.toList());
         System.out.println(collect2);
