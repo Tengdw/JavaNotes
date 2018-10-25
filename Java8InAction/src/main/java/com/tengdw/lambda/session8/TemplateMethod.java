@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public class TemplateMethod {
     public static void main(String[] args) {
         ICBCBank icbcBank = new ICBCBank();
-        icbcBank.makeCustomerHappy(new Customer());
+        icbcBank.processCustomer(1337);
         //Lambda实现
         new OnlineBankingLambda().processCustomer(1337, (Customer c) -> System.out.println("Hello!"));
     }
