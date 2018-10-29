@@ -7,4 +7,12 @@ public class Insurance {
     public String getName() {
         return name;
     }
+
+    public Insurance() {
+    }
+
+    public Insurance(String name) {
+        this.name = name;
+    }
+
 }
