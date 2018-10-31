@@ -43,7 +43,7 @@ public class BestPriceFinder {
                 .map(shop -> shop.getName() + " price is " + shop.getPrice(product))
                 .collect(Collectors.toList());
     }
-
+    //使用 CompletableFuture 自定义线程池
     public List<String> findPricesFuture(String product) {
         List<CompletableFuture<String>> priceFutures =
                 shops.stream()
@@ -138,6 +138,7 @@ public class BestPriceFinder {
         return prices;
     }
 
+    //合并两个独立的CompletableFuture对象
     public List<String> findPricesInUSD3(String product) {
         // Here, the for loop has been replaced by a mapping function...
         Stream<CompletableFuture<String>> priceFuturesStream = shops
