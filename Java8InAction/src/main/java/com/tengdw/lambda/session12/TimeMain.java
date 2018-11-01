@@ -3,9 +3,15 @@ package com.tengdw.lambda.session12;
 import org.junit.Test;
 
 import java.time.*;
-import java.time.temporal.ChronoField;
-import java.time.temporal.ChronoUnit;
+import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.Chronology;
+import java.time.chrono.JapaneseDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.*;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -78,9 +84,89 @@ public class TimeMain {
 
     @Test
     public void formatDateTest() {
+        //以比较直观的方式操纵LocalDate的属性
         LocalDate date1 = LocalDate.of(2014, 3, 18); //2014-3-18
         LocalDate date2 = date1.withYear(2011); //2011-3-18
         LocalDate date3 = date2.withDayOfMonth(25); //2011-3-25
         LocalDate date4 = date3.with(ChronoField.MONTH_OF_YEAR, 9); //2011-9-25
+        //以相对方式修改LocalDate对象的属性
+        LocalDate d1 = LocalDate.of(2014, 3, 18);
+        LocalDate d2 = d1.plusWeeks(1);
+        LocalDate d3 = d2.minusWeeks(3);
+        LocalDate d4 = d3.plus(6, ChronoUnit.MONTHS);
+        //使用预定义的TemporalAdjuster
+        LocalDate localDate1 = LocalDate.of(2014, 3, 18);
+        LocalDate localDate2 = localDate1.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
+        LocalDate localDate3 = localDate2.with(TemporalAdjusters.lastDayOfMonth());
+        //格式化日期
+        String s1 = date1.format(DateTimeFormatter.BASIC_ISO_DATE);
+        String s2 = date1.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        //解析日期
+        LocalDate date5 = LocalDate.parse("20180618", DateTimeFormatter.BASIC_ISO_DATE);
+        LocalDate date6 = LocalDate.parse("2018-06-18", DateTimeFormatter.ISO_LOCAL_DATE);
+        //按照某个模式创建DateTimeFormatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = date1.format(formatter);
+        LocalDate date7 = LocalDate.parse(formattedDate, formatter);
+        //创建一个本地化的DateTimeFormatter
+        DateTimeFormatter chinaFormatter = DateTimeFormatter.ofPattern("dd. MMMM yyyy", Locale.CHINA);
+        String chinaFormattedDate = date1.format(chinaFormatter);
+        LocalDate date8 = LocalDate.parse(chinaFormattedDate, chinaFormatter);
+        //构造一个DateTimeFormatter
+        DateTimeFormatter chinaDateTimeFormatter = new DateTimeFormatterBuilder()
+                .appendText(ChronoField.DAY_OF_MONTH)
+                .appendLiteral(". ")
+                .appendText(ChronoField.MONTH_OF_YEAR)
+                .appendLiteral(" ")
+                .appendText(ChronoField.YEAR)
+                .parseCaseInsensitive()
+                .toFormatter(Locale.CHINA);
+        System.out.println();
     }
+
+    @Test
+    public void customerTemporalAdjuster() {
+        LocalDate date = LocalDate.now();
+        LocalDate nextWorkDay = date.with(new NextWorkingDay());
+        TemporalAdjuster nextWorkingDay = TemporalAdjusters.ofDateAdjuster(temporal -> {
+            DayOfWeek dow =
+                    DayOfWeek.of(temporal.get(ChronoField.DAY_OF_WEEK));
+            int dayToAdd = 1;
+            if (dow == DayOfWeek.FRIDAY) dayToAdd = 3;
+            if (dow == DayOfWeek.SATURDAY) dayToAdd = 2;
+            return temporal.plus(dayToAdd, ChronoUnit.DAYS);
+        });
+        LocalDate nextWorkDay1 = date.with(nextWorkingDay);
+        System.out.println();
+    }
+
+    @Test
+    public void zoneIdTest() {
+        ZoneId zoneId = TimeZone.getDefault().toZoneId();
+        ZoneId chinaZone = ZoneId.of("Asia/Shanghai");
+        //为时间点添加时区信息
+        LocalDate date = LocalDate.of(2018, Month.NOVEMBER, 1);
+        ZonedDateTime adt1 = date.atStartOfDay(chinaZone);
+
+        LocalDateTime dateTime = LocalDateTime.of(2018, Month.OCTOBER, 1, 14, 26);
+        ZonedDateTime zdt2 = dateTime.atZone(chinaZone);
+
+        Instant instant = Instant.now();
+        ZonedDateTime zdt3 = instant.atZone(chinaZone);
+
+        //利用和 UTC/格林尼治时间的固定偏差计算时区
+        LocalDateTime localDateTime = LocalDateTime.of(2014, Month.MARCH, 18, 13, 45);
+        ZoneOffset newYorkOffset = ZoneOffset.of("-05:00");
+        OffsetDateTime dateTimeInNewYork = OffsetDateTime.of(localDateTime, newYorkOffset);
+
+        //使用别的日历系统  ISO-8601日历系统是世界文明日历系统的事实标准。
+        // 两种方式使用日本的日历系统
+        LocalDate localDate = LocalDate.of(2014, Month.MARCH, 18);
+        JapaneseDate japaneseDate = JapaneseDate.from(localDate);
+
+        Chronology japaneseChronology = Chronology.ofLocale(Locale.JAPAN);
+        ChronoLocalDate now = japaneseChronology.dateNow();
+        System.out.println();
+    }
+
 }
