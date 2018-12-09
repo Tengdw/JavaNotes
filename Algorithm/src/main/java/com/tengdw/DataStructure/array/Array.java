@@ -1,4 +1,4 @@
-package com.tengdw.DataStructure;
+package com.tengdw.DataStructure.array;
 
 /**
  * @author: Tengdw t_dw@qq.com
@@ -54,6 +54,7 @@ public class Array<E> {
 
     /**
      * 在所有元素前添加一个新的元素
+     *
      * @param e
      */
     public void addFirst(E e) {
@@ -82,6 +83,7 @@ public class Array<E> {
 
     /**
      * 获取index索引位置的元素
+     *
      * @param index
      * @return
      */
@@ -92,8 +94,16 @@ public class Array<E> {
         return data[index];
     }
 
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
     /**
      * 修改index索引位置的元素e
+     *
      * @param index
      * @param e
      */
@@ -106,6 +116,7 @@ public class Array<E> {
 
     /**
      * 查找数组中是否有元素e
+     *
      * @param e
      * @return
      */
@@ -120,6 +131,7 @@ public class Array<E> {
 
     /**
      * 查找元素中e所在的索引，如果不存在则返回 -1
+     *
      * @param e
      * @return
      */
@@ -134,6 +146,7 @@ public class Array<E> {
 
     /**
      * 从数组中删除index位置的元素，返回删除的元素
+     *
      * @param index
      * @return
      */
@@ -143,7 +156,7 @@ public class Array<E> {
         }
         E ret = data[index];
         for (int i = index + 1; i < size; i++) {
-            data[i-1] = data[i];
+            data[i - 1] = data[i];
         }
         size--;
         data[size] = null;
@@ -156,6 +169,7 @@ public class Array<E> {
 
     /**
      * 从数组中删除第一个元素，返回删除的元素
+     *
      * @return
      */
     public E removeFirst() {
@@ -164,14 +178,16 @@ public class Array<E> {
 
     /**
      * 从数组中删除最后一个元素，返回删除的元素
+     *
      * @return
      */
     public E removeLast() {
-        return remove(size-1);
+        return remove(size - 1);
     }
 
     /**
      * 从数组中删除元素e
+     *
      * @param e
      */
     public void removeElement(E e) {
@@ -198,6 +214,7 @@ public class Array<E> {
 
     /**
      * 扩容
+     *
      * @param newCapacity
      */
     private void resize(int newCapacity) {
