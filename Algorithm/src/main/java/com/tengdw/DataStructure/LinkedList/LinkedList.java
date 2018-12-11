@@ -84,7 +84,6 @@ public class LinkedList<E> {
      */
     public void addFirst(E e) {
         add(0, e);
-        size++;
     }
 
     /**
@@ -150,6 +149,35 @@ public class LinkedList<E> {
             cur = cur.next;
         }
         return false;
+    }
+
+    /**
+     * 移除第index个位置的元素
+     *
+     * @param index
+     * @return
+     */
+    public E remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove failed. Illegal index.");
+        }
+        Node prev = dummyHead;
+        for (int i = 0; i < index; i++) {
+            prev = prev.next;
+        }
+        Node retNode = prev.next;
+        prev.next = retNode.next;
+        retNode.next = null;
+        size--;
+        return retNode.e;
+    }
+
+    public E removeFirst() {
+        return remove(0);
+    }
+
+    public E removeLast() {
+        return remove(size - 1);
     }
 
     @Override
