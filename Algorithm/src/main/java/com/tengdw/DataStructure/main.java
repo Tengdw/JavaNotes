@@ -1,28 +1,28 @@
 package com.tengdw.DataStructure;
 
+import com.tengdw.DataStructure.LinkedList.LinkedList;
+import com.tengdw.DataStructure.queue.ArrayQueue;
+import com.tengdw.DataStructure.queue.LinkedListQueue;
+import com.tengdw.DataStructure.queue.LoopQueue;
+import com.tengdw.DataStructure.queue.Queue;
+import com.tengdw.DataStructure.stack.ArrayStack;
+import com.tengdw.DataStructure.stack.LinkedListStack;
+
 /**
  * @author: Tengdw t_dw@qq.com
  * @create: 2018-12-04 00:19
  **/
 public class main {
     public static void main(String[] args) {
-        Array<Integer> array = new Array();
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
         for (int i = 0; i < 10; i++) {
-            array.addLast(i);
+            queue.enqueue(i);
+            System.out.println(queue);
+            if (i % 3 == 2) {
+                queue.dequeue();
+                System.out.println(queue);
+            }
         }
-        System.out.println(array);
-
-        array.addFirst(100);
-        System.out.println(array);
-
-        array.remove(2);
-        System.out.println(array);
-
-        array.removeElement(100);
-        System.out.println(array);
-
-        array.removeFirst();
-        System.out.println(array);
 
     }
 }
