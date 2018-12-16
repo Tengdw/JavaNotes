@@ -31,7 +31,7 @@ public class LinkedList<E> {
         }
     }
 
-    //虚拟头结点
+    //虚拟头节点
     private Node dummyHead;
     private int size;
 

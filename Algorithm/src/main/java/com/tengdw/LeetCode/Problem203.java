@@ -11,7 +11,7 @@ import org.junit.Test;
 public class Problem203 {
     class SolutionV1 {
         public ListNode removeElements(ListNode head, int val) {
-            //假设第一个Node的值就是val，以及第二个Node的值也是val，删除头结点
+            //假设第一个Node的值就是val，以及第二个Node的值也是val，删除头节点
             while (head != null && head.val == val) {
                 ListNode delNode = head;
                 head = head.next;
@@ -41,7 +41,7 @@ public class Problem203 {
 
     class SolutionV2 {
         public ListNode removeElements(ListNode head, int val) {
-            //使用虚拟头结点
+            //使用虚拟头节点
             ListNode dummyHead = new ListNode(-1);
             dummyHead.next = head;
             ListNode prev = dummyHead;
