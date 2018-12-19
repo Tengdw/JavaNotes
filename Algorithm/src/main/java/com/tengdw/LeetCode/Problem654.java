@@ -1,5 +1,6 @@
 package com.tengdw.LeetCode;
 
+import com.tengdw.LeetCode.utils.TreeNode;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -43,16 +44,6 @@ public class Problem654 {
             root.left = constructMaximumBinaryTree(leftNums);
             root.right = constructMaximumBinaryTree(rightNums);
             return root;
-        }
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
         }
     }
 

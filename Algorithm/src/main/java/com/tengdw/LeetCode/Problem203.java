@@ -1,5 +1,6 @@
 package com.tengdw.LeetCode;
 
+import com.tengdw.LeetCode.utils.ListNode;
 import org.junit.Test;
 
 /**
@@ -67,27 +68,6 @@ public class Problem203 {
             }
             head.next = removeElements(head.next, val);
             return head.val == val ? head.next : head;
-        }
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-        @Override
-        public String toString(){
-
-            StringBuilder s = new StringBuilder();
-            ListNode cur = this;
-            while(cur != null){
-                s.append(cur.val + "->");
-                cur = cur.next;
-            }
-            s.append("NULL");
-            return s.toString();
         }
     }
 

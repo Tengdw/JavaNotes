@@ -1,5 +1,7 @@
 package com.tengdw.LeetCode;
 
+import com.tengdw.LeetCode.utils.TreeNode;
+
 /**
  * 二叉树的最大深度
  * https://leetcode.com/problems/maximum-depth-of-binary-tree/
@@ -24,13 +26,4 @@ public class Problem104 {
         }
     }
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

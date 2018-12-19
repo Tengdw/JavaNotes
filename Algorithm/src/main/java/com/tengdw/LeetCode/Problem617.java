@@ -1,5 +1,7 @@
 package com.tengdw.LeetCode;
 
+import com.tengdw.LeetCode.utils.TreeNode;
+
 /**
  * 合并二叉树
  * https://leetcode.com/problems/merge-two-binary-trees/
@@ -24,13 +26,4 @@ public class Problem617 {
         }
     }
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }
