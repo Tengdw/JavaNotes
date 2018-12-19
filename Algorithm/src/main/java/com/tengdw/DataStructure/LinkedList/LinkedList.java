@@ -97,6 +97,7 @@ public class LinkedList<E> {
 
     /**
      * 获取第index个位置的元素
+     *
      * @param index
      * @return
      */
@@ -121,6 +122,7 @@ public class LinkedList<E> {
 
     /**
      * 修改链表第index个位置的元素为e
+     *
      * @param index
      * @param e
      */
@@ -137,6 +139,7 @@ public class LinkedList<E> {
 
     /**
      * 查找链表中是否有元素e
+     *
      * @param e
      * @return
      */
@@ -178,6 +181,29 @@ public class LinkedList<E> {
 
     public E removeLast() {
         return remove(size - 1);
+    }
+
+    /**
+     * 从链表中删除元素e
+     *
+     * @param e
+     */
+    public void removeElement(E e) {
+        Node prev = dummyHead;
+        //找到待删除元素的前一个节点
+        while (prev.next != null) {
+            if (prev.next.e.equals(e)) {
+                break;
+            }
+            prev = prev.next;
+        }
+        //移除元素e
+        if (prev.next != null) {
+            Node delNode = prev.next;
+            prev.next = delNode.next;
+            delNode.next = null;
+            size--;
+        }
     }
 
     @Override
