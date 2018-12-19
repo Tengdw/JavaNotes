@@ -111,11 +111,14 @@ public class BST<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
+    /**
+     * 中序遍历
+     * 使用迭代 {@link com.tengdw.LeetCode.Problem94.Solution#inorderTraversal}
+     */
     public void inOrder() {
         inOrder(root);
     }
 
-    //中序遍历
     private void inOrder(Node node) {
         if (node == null)
             return;
@@ -125,7 +128,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     public void postOrder() {
-        postOrder();
+        postOrder(root);
     }
 
     //后序遍历

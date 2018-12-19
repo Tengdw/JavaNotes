@@ -1,11 +1,10 @@
 package com.tengdw.LeetCode;
 
-import com.tengdw.DataStructure.stack.ArrayStack;
-import com.tengdw.DataStructure.stack.Stack;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * N叉树的后序遍历
@@ -40,7 +39,7 @@ public class Problem590 {
         if (root == null) {
             return list;
         }
-        Stack<Node> stack = new ArrayStack<>();
+        Stack<Node> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
             Node n = stack.pop();
