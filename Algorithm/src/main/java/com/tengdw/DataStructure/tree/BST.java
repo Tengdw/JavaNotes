@@ -23,7 +23,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     private Node root;
-    private int size;
+    public int size;
 
     public BST() {
         root = null;
