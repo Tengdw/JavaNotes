@@ -120,23 +120,4 @@ public class LinkedListMap<K, V> implements Map<K, V> {
         }
         return null;
     }
-
-    @Test
-    public void test() {
-        ArrayList<String> words = new ArrayList<>();
-        if (FileOperation.readFile("D:\\Dev\\玩转数据结构www.dmzshequ.com\\Play-with-Data-Structures-master\\07-Set-and-Map\\06-LinkedListMap\\pride-and-prejudice.txt",
-                words)) {
-            LinkedListMap<String, Integer> map = new LinkedListMap<>();
-            for (String word : words) {
-                if (map.contains(word)) {
-                    map.set(word, map.get(word) + 1);
-                } else {
-                    map.add(word, 1);
-                }
-            }
-            System.out.println(map.size);
-            System.out.println(map.get("pride"));
-            System.out.println(map.get("prejudice"));
-        }
-    }
 }

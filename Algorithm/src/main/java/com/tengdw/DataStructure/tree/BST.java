@@ -23,11 +23,15 @@ public class BST<E extends Comparable<E>> {
     }
 
     private Node root;
-    public int size;
+    private int size;
 
     public BST() {
         root = null;
         size = 0;
+    }
+
+    public int size(){
+        return size;
     }
 
     public boolean isEmpty() {

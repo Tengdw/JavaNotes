@@ -32,7 +32,7 @@ public class BSTSet<E extends Comparable<E>> implements Set<E> {
 
     @Override
     public int getSize() {
-        return bst.size;
+        return bst.size();
     }
 
     @Override
