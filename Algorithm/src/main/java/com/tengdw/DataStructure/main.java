@@ -1,6 +1,7 @@
 package com.tengdw.DataStructure;
 
 import com.tengdw.DataStructure.LinkedList.LinkedList;
+import com.tengdw.DataStructure.heap.MaxHeap;
 import com.tengdw.DataStructure.map.BSTMap;
 import com.tengdw.DataStructure.queue.ArrayQueue;
 import com.tengdw.DataStructure.queue.LinkedListQueue;
@@ -11,9 +12,8 @@ import com.tengdw.DataStructure.stack.LinkedListStack;
 import com.tengdw.DataStructure.tree.BST;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -80,4 +80,25 @@ public class main {
             System.out.println(map.get("prejudice"));
         }
     }
+
+    @Test
+    public void heapTest() {
+        int n = 1_000_000;
+        MaxHeap<Integer> heap = new MaxHeap<>();
+        Random random = new Random();
+        for (int i = 0; i < n; i++) {
+            heap.add(random.nextInt(Integer.MAX_VALUE));
+        }
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = heap.extractMax();
+        }
+        for (int i = 1; i < n; i++) {
+            if (arr[i - 1] < arr[i]) {
+                throw new IllegalArgumentException("Error");
+            }
+        }
+        System.out.println("complated!!!");
+    }
+
 }
