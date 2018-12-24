@@ -6,6 +6,7 @@ import org.junit.Test;
 /**
  * 二叉树展开为链表
  * https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
+ *
  * @author Tengdw t_dw@qq.com
  * @description
  * @date 2018/12/21 17:24
@@ -13,6 +14,7 @@ import org.junit.Test;
 public class Problem114 {
     class Solution {
         TreeNode prev = null;
+
         //后序遍历的顺序为 left->right->node
         public void flatten(TreeNode root) {
             if (root == null) return;

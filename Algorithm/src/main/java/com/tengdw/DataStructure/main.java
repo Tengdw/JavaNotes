@@ -10,6 +10,7 @@ import com.tengdw.DataStructure.queue.Queue;
 import com.tengdw.DataStructure.stack.ArrayStack;
 import com.tengdw.DataStructure.stack.LinkedListStack;
 import com.tengdw.DataStructure.tree.BST;
+import com.tengdw.DataStructure.tree.SegmentTree;
 import org.junit.Test;
 
 import java.util.*;
@@ -101,4 +102,14 @@ public class main {
         System.out.println("complated!!!");
     }
 
+    @Test
+    public void segmentTreeTest() {
+        Integer[] nums = {-2, 0, 3, -5, 2, -1};
+        SegmentTree<Integer> tree = new SegmentTree<>(nums, (a, b) -> a + b);
+//        System.out.println(tree);
+
+        System.out.println(tree.query(0, 2)); // 1
+        System.out.println(tree.query(2, 5)); // -1
+        System.out.println(tree.query(0, 5)); // -3
+    }
 }

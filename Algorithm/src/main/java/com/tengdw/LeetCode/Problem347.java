@@ -63,7 +63,7 @@ public class Problem347 {
 
     @Test
     public void test() {
-        int[] nums = new int[]{4,1,-1,2,-1,2,3,-1,-1,1,1,1,1,1,2,2,5,6,9,8,8,7,9,-1,9};
+        int[] nums = new int[]{4, 1, -1, 2, -1, 2, 3, -1, -1, 1, 1, 1, 1, 1, 2, 2, 5, 6, 9, 8, 8, 7, 9, -1, 9};
         int k = 2;
         Solution solution = new Solution();
         List<Integer> integers = solution.topKFrequent(nums, k);
