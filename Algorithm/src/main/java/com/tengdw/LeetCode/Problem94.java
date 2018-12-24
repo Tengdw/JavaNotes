@@ -1,6 +1,7 @@
 package com.tengdw.LeetCode;
 
 import com.tengdw.LeetCode.utils.TreeNode;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,5 +51,11 @@ public class Problem94 {
                 inorder(node.right, list);
             }
         }
+    }
+    @Test
+    public void test() {
+        TreeNode root = TreeNode.stringToTreeNode("[3,9,20,5,10,15,7]");
+        List<Integer> list = new Solution().inorderTraversal(root);
+        System.out.println(list);
     }
 }

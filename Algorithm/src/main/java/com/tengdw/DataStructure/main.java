@@ -31,35 +31,35 @@ public class main {
         //  3      6
         // / \      \
         //2   4      8
-//        for (int num : nums) {
-//            bst.add(num);
-//        }
+        for (int num : nums) {
+            bst.add(num);
+        }
 //        bst.levelOrder();
 //        System.out.println(bst.removeMin());
 //        System.out.println(bst.removeMax());
 
-//        bst.preOrder();
-//        System.out.println();
-//        bst.inOrder();
-//        System.out.println();
+        bst.preOrder(); // 5 3 2 4 6 8
+        System.out.println();
+        bst.inOrder(); //  2 3 4 5 6 8
+        System.out.println();
 //        bst.postOrder();
 //        System.out.println();
 
 //        System.out.println(bst);
 
-        for (int i = 0; i < 1000; i++) {
-            bst.add(random.nextInt(10000));
-        }
-        List<Integer> numbers = new ArrayList<>();
-        while (!bst.isEmpty()) {
-            numbers.add(bst.removeMin());
-        }
-        System.out.println(numbers);
-        for (int i = 1; i < numbers.size(); i++) {
-            if (numbers.get(i - 1) > numbers.get(i)) {
-                throw new IllegalArgumentException("Error");
-            }
-        }
+//        for (int i = 0; i < 1000; i++) {
+//            bst.add(random.nextInt(10000));
+//        }
+//        List<Integer> numbers = new ArrayList<>();
+//        while (!bst.isEmpty()) {
+//            numbers.add(bst.removeMin());
+//        }
+//        System.out.println(numbers);
+//        for (int i = 1; i < numbers.size(); i++) {
+//            if (numbers.get(i - 1) > numbers.get(i)) {
+//                throw new IllegalArgumentException("Error");
+//            }
+//        }
     }
 
     @Test
