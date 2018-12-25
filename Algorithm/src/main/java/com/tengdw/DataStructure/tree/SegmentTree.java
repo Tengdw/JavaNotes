@@ -112,6 +112,45 @@ public class SegmentTree<E> {
         return merge.merge(leftResult, rightResult);
     }
 
+    /**
+     * 将 index 位置的值更新为e
+     * @param index
+     * @param e
+     */
+    public void set(int index, E e) {
+        if (index < 0 || index >= data.length)
+            throw new IllegalArgumentException("Index is illegal.");
+        data[index] = e;
+        /**维护tree{@link tree}*/
+        set(0, 0, data.length - 1, index, e);
+    }
+
+    /**
+     * 维护tree{@link SegmentTree#tree}
+     * 在以treeIndex为根的线段树中更新index的值为e
+     * @param treeIndex
+     * @param l
+     * @param r
+     * @param index
+     * @param e
+     */
+    private void set(int treeIndex, int l, int r, int index, E e) {
+        if (l == r) {
+            tree[treeIndex] = e;
+            return;
+        }
+        int mid = l + (r - l) / 2;
+        int leftTreeIndex = leftChild(treeIndex);
+        int rightTreeIndex = rightChild(treeIndex);
+        // 与 query() 的逻辑差不多
+        if (index >= mid + 1) {
+            set(rightTreeIndex, mid + 1, r, index, e);
+        } else { // index <= mid
+            set(leftTreeIndex, l, mid, index, e);
+        }
+        tree[treeIndex] = merge.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+    }
+
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();

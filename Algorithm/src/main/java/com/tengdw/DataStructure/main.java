@@ -7,10 +7,12 @@ import com.tengdw.DataStructure.queue.ArrayQueue;
 import com.tengdw.DataStructure.queue.LinkedListQueue;
 import com.tengdw.DataStructure.queue.LoopQueue;
 import com.tengdw.DataStructure.queue.Queue;
+import com.tengdw.DataStructure.set.BSTSet;
 import com.tengdw.DataStructure.stack.ArrayStack;
 import com.tengdw.DataStructure.stack.LinkedListStack;
 import com.tengdw.DataStructure.tree.BST;
 import com.tengdw.DataStructure.tree.SegmentTree;
+import com.tengdw.DataStructure.tree.Trie;
 import org.junit.Test;
 
 import java.util.*;
@@ -111,5 +113,48 @@ public class main {
         System.out.println(tree.query(0, 2)); // 1
         System.out.println(tree.query(2, 5)); // -1
         System.out.println(tree.query(0, 5)); // -3
+    }
+
+    @Test
+    public void trieTest() {
+        System.out.println("Pride and Prejudice");
+        String file = "D:\\Dev\\玩转数据结构www.dmzshequ.com\\Play-with-Data-Structures-master\\10-Trie\\03-Searching-in-Trie\\pride-and-prejudice.txt";
+        ArrayList<String> words = new ArrayList<>();
+        if(FileOperation.readFile(file, words)){
+
+            long startTime = System.nanoTime();
+
+            BSTSet<String> set = new BSTSet<>();
+            for(String word: words)
+                set.add(word);
+
+            for(String word: words)
+                set.contains(word);
+
+            long endTime = System.nanoTime();
+
+            double time = (endTime - startTime) / 1000000000.0;
+
+            System.out.println("Total different words: " + set.getSize());
+            System.out.println("BSTSet: " + time + " s");
+
+            // ---
+
+            startTime = System.nanoTime();
+
+            Trie trie = new Trie();
+            for(String word: words)
+                trie.add(word);
+
+            for(String word: words)
+                trie.contains(word);
+
+            endTime = System.nanoTime();
+
+            time = (endTime - startTime) / 1000000000.0;
+
+            System.out.println("Total different words: " + trie.getSize());
+            System.out.println("Trie: " + time + " s");
+        }
     }
 }

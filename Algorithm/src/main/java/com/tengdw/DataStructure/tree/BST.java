@@ -1,5 +1,7 @@
 package com.tengdw.DataStructure.tree;
 
+import com.tengdw.LeetCode.LeetCode94;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -117,7 +119,7 @@ public class BST<E extends Comparable<E>> {
 
     /**
      * 中序遍历
-     * 使用迭代 {@link com.tengdw.LeetCode.Problem94.Solution#inorderTraversal}
+     * 使用迭代 {@link LeetCode94.Solution#inorderTraversal}
      */
     public void inOrder() {
         inOrder(root);
