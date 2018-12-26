@@ -61,7 +61,11 @@ public class Trie {
         }
     }
 
-    // 查询单词word是否存在
+    /**
+     * 查询单词word是否存在
+     * @param word
+     * @return
+     */
     public boolean contains(String word) {
         Node cur = root;
         for (int i = 0; i < word.length(); i++) {
@@ -71,5 +75,21 @@ public class Trie {
             cur = cur.next.get(c);
         }
         return cur.isWord;
+    }
+
+    /**
+     * 查询Trie中是否有以prefix为前缀
+     * @param prefix
+     * @return
+     */
+    public boolean isPrefix(String prefix) {
+        Node cur = root;
+        for (int i = 0; i < prefix.length(); i++) {
+            char c = prefix.charAt(i);
+            if (cur.next.get(c) == null)
+                return false;
+            cur = cur.next.get(c);
+        }
+        return true;
     }
 }
