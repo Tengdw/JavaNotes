@@ -54,7 +54,7 @@ public class LeetCode94 {
     }
     @Test
     public void test() {
-        TreeNode root = TreeNode.stringToTreeNode("[3,9,20,5,10,15,7]");
+        TreeNode root = TreeNode.stringToTreeNode("[5,3,6,2,4,null,8]");
         List<Integer> list = new Solution().inorderTraversal(root);
         System.out.println(list);
     }
