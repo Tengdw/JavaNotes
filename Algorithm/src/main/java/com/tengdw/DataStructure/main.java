@@ -45,8 +45,8 @@ public class main {
         System.out.println();
         bst.inOrder(); //  2 3 4 5 6 8
         System.out.println();
-//        bst.postOrder();
-//        System.out.println();
+        bst.postOrder(); // 2 3 4 6 8 5
+        System.out.println();
 
 //        System.out.println(bst);
 

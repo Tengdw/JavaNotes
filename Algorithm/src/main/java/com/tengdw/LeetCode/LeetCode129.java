@@ -34,7 +34,7 @@ public class LeetCode129 {
 
     @Test
     public void test() {
-        TreeNode root = TreeNode.stringToTreeNode("[1,2,3]");
+        TreeNode root = TreeNode.stringToTreeNode("[1,2,3,null,5]");
         int i = new Solution().sumNumbers(root);
         System.out.println(i);
     }
