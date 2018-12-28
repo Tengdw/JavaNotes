@@ -13,19 +13,16 @@ import org.junit.Test;
  */
 public class LeetCode404 {
     class Solution {
-        int res = 0;
-
         public int sumOfLeftLeaves(TreeNode root) {
+            int res = 0;
             if (root == null) return res;
-            if (root.left == null)
-                return root.val;
             if (root.left != null) {
-                res += sumOfLeftLeaves(root.left);
-
+                if (root.left.left == null && root.left.right == null)
+                    res += root.left.val;
+                else
+                    res += sumOfLeftLeaves(root.left);
             }
-            if (root.right != null)
-                res += sumOfLeftLeaves(root.right);
-
+            res += sumOfLeftLeaves(root.right);
             return res;
         }
 
@@ -34,7 +31,7 @@ public class LeetCode404 {
 
     @Test
     public void test() {
-        TreeNode root = TreeNode.stringToTreeNode("[3,9,20,5,6,15,7]");
+        TreeNode root = TreeNode.stringToTreeNode("[3,9,20,null,null,15,7]");
         int i = new Solution().sumOfLeftLeaves(root);
         System.out.println(i);
     }
