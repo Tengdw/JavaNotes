@@ -1,34 +1,42 @@
 package com.tengdw.DataStructure.UnionFind;
 
 /**
+ * 这一版的并查集实现中 parent[i] 存放的是指针，指向元素所在的集合
+ * i 存放的是真正的值
+ *
  * @author: Tengdw t_dw@qq.com
  * @create: 2018-12-27 22:55
  **/
 public class UnionFind implements UF {
 
-    private int[] id;
+    private int[] parent;
 
     public UnionFind(int size) {
-        id = new int[size];
-        for (int i = 0; i < id.length; i++) {
-            id[i] = i;
+        parent = new int[size];
+        // 初始化, 每一个id[i]指向自己, 没有合并的元素
+        for (int i = 0; i < size; i++) {
+            parent[i] = i;
         }
     }
 
     @Override
     public int getSize() {
-        return id.length;
+        return parent.length;
     }
 
     /**
      * 查找元素p所对应的集合编号
+     * O(h)复杂度 h为树的高度
+     *
      * @param p
      * @return
      */
     private int find(int p) {
-        if (p < 0 && p >= id.length)
+        if (p < 0 && p >= parent.length)
             throw new IllegalArgumentException("p is out of bound.");
-        return id[p];
+        while (p != parent[p])
+            p = parent[p];
+        return p;
     }
 
     @Override
@@ -38,13 +46,10 @@ public class UnionFind implements UF {
 
     @Override
     public void unionElements(int p, int q) {
-        int pID = find(p);
-        int qID = find(q);
-        if (pID == qID)
+        int pRoot = find(p);
+        int qRoot = find(q);
+        if (pRoot == qRoot)
             return;
-        for (int i = 0; i < id.length; i++) {
-            if (id[i] == pID)
-                id[i] = qID;
-        }
+        parent[pRoot] = qRoot;
     }
 }
