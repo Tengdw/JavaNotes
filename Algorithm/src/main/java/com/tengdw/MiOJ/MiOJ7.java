@@ -1,6 +1,7 @@
 package com.tengdw.MiOJ;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Tengdw t_dw@qq.com
@@ -9,16 +10,24 @@ import java.util.ArrayList;
  */
 public class MiOJ7 {
     private static String solution(String line) {
-        String[] split = line.split(" ");
+        String[] split = line.split(",");
         int size = split.length;
-        ArrayList<Integer> list = new ArrayList<>(size);
+        int[] nums = new int[size];
         for (int i = 0; i < size; i++)
-            list.add(Integer.valueOf(split[i]));
-        while (size-- > 0) {
-            Integer num = list.get(size - 1);
-            if (!list.contains(num - 1)) {
+            nums[i] = Integer.valueOf(split[i]);
 
-            }
+        Map<Integer, Integer> map = new HashMap<>();
+        int max = 0;
+        // int min=nums[0];
+        for (int num : nums) {
+            if (num > max)
+                max = num;
+            map.put(num, 1);
         }
+        for (int i = 1; i < max; i++)
+            if (map.getOrDefault(i, -1) == -1)
+                return i + "";
+
+        return max + 1 + "";
     }
 }
