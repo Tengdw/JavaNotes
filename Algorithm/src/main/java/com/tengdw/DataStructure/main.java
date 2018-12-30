@@ -1,24 +1,17 @@
 package com.tengdw.DataStructure;
 
-import com.tengdw.DataStructure.LinkedList.LinkedList;
+import com.tengdw.DataStructure.UnionFind.UF;
+import com.tengdw.DataStructure.UnionFind.UnionFind;
 import com.tengdw.DataStructure.heap.MaxHeap;
 import com.tengdw.DataStructure.map.BSTMap;
-import com.tengdw.DataStructure.queue.ArrayQueue;
-import com.tengdw.DataStructure.queue.LinkedListQueue;
-import com.tengdw.DataStructure.queue.LoopQueue;
-import com.tengdw.DataStructure.queue.Queue;
 import com.tengdw.DataStructure.set.BSTSet;
-import com.tengdw.DataStructure.stack.ArrayStack;
-import com.tengdw.DataStructure.stack.LinkedListStack;
 import com.tengdw.DataStructure.tree.BST;
 import com.tengdw.DataStructure.tree.SegmentTree;
 import com.tengdw.DataStructure.tree.Trie;
 import org.junit.Test;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author: Tengdw t_dw@qq.com
@@ -156,5 +149,50 @@ public class main {
             System.out.println("Total different words: " + trie.getSize());
             System.out.println("Trie: " + time + " s");
         }
+    }
+
+    @Test
+    public void unionFindTest() {
+        // UnionFind1 慢于 UnionFind2
+//        int size = 100000;
+//        int m = 10000;
+
+        // UnionFind2 慢于 UnionFind1, 但UnionFind3最快
+        int size = 10000000;
+        int m = 10000000;
+
+//        UnionFind1 uf1 = new UnionFind1(size);
+//        System.out.println("UnionFind1 : " + testUF(uf1, m) + " s");
+        UnionFind uf2 = new UnionFind(size);
+        System.out.println("UnionFind : " + testUF(uf2, m) + " s");
+//        UnionFind3 uf3 = new UnionFind3(size);
+//        System.out.println("UnionFind1 : " + testUF(uf3, m) + " s");
+
+
+    }
+
+    private static double testUF(UF uf, int m){
+
+        int size = uf.getSize();
+        Random random = new Random();
+
+        long startTime = System.nanoTime();
+
+
+        for(int i = 0 ; i < m ; i ++){
+            int a = random.nextInt(size);
+            int b = random.nextInt(size);
+            uf.unionElements(a, b);
+        }
+
+        for(int i = 0 ; i < m ; i ++){
+            int a = random.nextInt(size);
+            int b = random.nextInt(size);
+            uf.isConnected(a, b);
+        }
+
+        long endTime = System.nanoTime();
+
+        return (endTime - startTime) / 1000000000.0;
     }
 }

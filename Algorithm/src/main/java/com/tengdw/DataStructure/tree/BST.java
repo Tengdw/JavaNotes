@@ -119,7 +119,7 @@ public class BST<E extends Comparable<E>> {
 
     /**
      * 中序遍历
-     * 使用迭代 {@link LeetCode94.Solution#inorderTraversal}
+     * 使用迭代 {@link LeetCode94}
      */
     public void inOrder() {
         inOrder(root);

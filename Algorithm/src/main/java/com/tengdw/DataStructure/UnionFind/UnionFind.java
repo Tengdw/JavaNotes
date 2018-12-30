@@ -10,15 +10,15 @@ package com.tengdw.DataStructure.UnionFind;
 public class UnionFind implements UF {
 
     private int[] parent;
-    private int[] sz; //sz[i]表示以i为根的集合中元素的个数
+    private int[] rank; //sz[i]表示以i为根的集合所表示的树的层数
 
     public UnionFind(int size) {
         parent = new int[size];
-        sz = new int[size];
+        rank = new int[size];
         // 初始化, 每一个id[i]指向自己, 没有合并的元素
         for (int i = 0; i < size; i++) {
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -37,9 +37,10 @@ public class UnionFind implements UF {
     private int find(int p) {
         if (p < 0 && p >= parent.length)
             throw new IllegalArgumentException("p is out of bound.");
-        while (p != parent[p])
-            p = parent[p];
-        return p;
+        if (p != parent[p])
+            // 路径压缩 子节点全部指向根节点
+            parent[p] = find(parent[p]);
+        return parent[p];
     }
 
     @Override
@@ -54,13 +55,14 @@ public class UnionFind implements UF {
         int qRoot = find(q);
         if (pRoot == qRoot)
             return;
-        //元素少的集合合并到元素多的
-        if (sz[pRoot] < sz[qRoot]) {
+        //将rank低的集合合并到rank高的集合
+        if (rank[pRoot] < rank[qRoot]) {
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
-        } else {// sz[pRoot] >= sz[qRoot]
+        } else if (rank[pRoot] > rank[qRoot]) {
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+        } else {// sz[pRoot] = sz[qRoot]
+            parent[qRoot] = pRoot;
+            rank[pRoot] += 1;
         }
     }
 }
