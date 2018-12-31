@@ -5,6 +5,7 @@ import com.tengdw.DataStructure.UnionFind.UnionFind;
 import com.tengdw.DataStructure.heap.MaxHeap;
 import com.tengdw.DataStructure.map.BSTMap;
 import com.tengdw.DataStructure.set.BSTSet;
+import com.tengdw.DataStructure.tree.AVLTree;
 import com.tengdw.DataStructure.tree.BST;
 import com.tengdw.DataStructure.tree.SegmentTree;
 import com.tengdw.DataStructure.tree.Trie;
@@ -61,7 +62,7 @@ public class main {
     @Test
     public void test() {
         ArrayList<String> words = new ArrayList<>();
-        if (FileOperation.readFile("D:\\Dev\\玩转数据结构www.dmzshequ.com\\Play-with-Data-Structures-master\\07-Set-and-Map\\06-LinkedListMap\\pride-and-prejudice.txt",
+        if (FileOperation.readFile("pride-and-prejudice.txt",
                 words)) {
             BSTMap<String, Integer> map = new BSTMap<>();
             for (String word : words) {
@@ -111,7 +112,7 @@ public class main {
     @Test
     public void trieTest() {
         System.out.println("Pride and Prejudice");
-        String file = "D:\\Dev\\玩转数据结构www.dmzshequ.com\\Play-with-Data-Structures-master\\10-Trie\\03-Searching-in-Trie\\pride-and-prejudice.txt";
+        String file = "pride-and-prejudice.txt";
         ArrayList<String> words = new ArrayList<>();
         if(FileOperation.readFile(file, words)){
 
@@ -194,5 +195,34 @@ public class main {
         long endTime = System.nanoTime();
 
         return (endTime - startTime) / 1000000000.0;
+    }
+
+    @Test
+    public void AVLTest() {
+        System.out.println("Pride and Prejudice");
+        String file = "pride-and-prejudice.txt";
+        ArrayList<String> words = new ArrayList<>();
+        if(FileOperation.readFile(file, words)) {
+            System.out.println("Total words: " + words.size());
+            // Collections.sort(words);
+            long startTime = System.nanoTime();
+
+            AVLTree<String, Integer> avl = new AVLTree<>();
+            for (String word : words) {
+                if (avl.contains(word))
+                    avl.set(word, avl.get(word) + 1);
+                else
+                    avl.add(word, 1);
+            }
+
+            for(String word: words)
+                avl.contains(word);
+
+            long endTime = System.nanoTime();
+
+            double time = (endTime - startTime) / 1000000000.0;
+            System.out.println("AVL: " + time + " s");
+        }
+
     }
 }
