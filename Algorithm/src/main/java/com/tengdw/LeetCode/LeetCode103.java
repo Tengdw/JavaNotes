@@ -25,10 +25,8 @@ public class LeetCode103 {
                 LinkedList<Integer> list = new LinkedList<>();
                 while (size-- > 0) {
                     TreeNode cur = queue.poll();
-                    if (flag)
-                        list.add(cur.val);
-                    else
-                        list.addFirst(cur.val);
+                    if (flag) list.add(cur.val);
+                    else list.addFirst(cur.val);
 
                     if (cur.left != null)
                         queue.add(cur.left);
@@ -44,9 +42,8 @@ public class LeetCode103 {
 
     @Test
     public void test() {
-//        TreeNode root = TreeNode.stringToTreeNode("[3,9,20,null,null,15,7]");
-//        List<List<Integer>> lists = new Solution().zigzagLevelOrder(root);
-//        System.out.println(lists);
-        System.out.println(4626149 & 0);
+        TreeNode root = TreeNode.stringToTreeNode("[3,9,20,null,null,15,7]");
+        List<List<Integer>> lists = new Solution().zigzagLevelOrder(root);
+        System.out.println(lists);
     }
 }
