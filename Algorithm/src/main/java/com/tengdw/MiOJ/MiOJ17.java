@@ -1,5 +1,6 @@
 package com.tengdw.MiOJ;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Stack;
@@ -13,59 +14,39 @@ import java.util.Stack;
  */
 public class MiOJ17 {
 
-    /*
-    壹贰叁肆伍陆柒捌玖拾
-           万
-    89 0000   0000
-       亿    万
-    450  0000  0000
-    654  3512  4546
-    4654 1253 456
-     */
     private static String solution(String line) {
-        String[] nums = new String[]{"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖", "拾"};
-        String[] units = new String[]{"个", "拾", "佰", "仟", "万", "亿"};
-        Stack<String> stack = new Stack<>();
-        int length = line.length();
-        while (length > 0) {
-            String sub;
-            if (length - 4 < 0) sub = line.substring(0, length);
-            else sub = line.substring(length - 4, length);
-            stack.push(sub);
-            length -= 4;
+        String[] nums = new String[]{"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"};
+        String[] units = new String[]{"", "拾", "佰", "仟", "万", "拾", "佰", "仟", "亿", "拾", "佰", "千"};
+        char[] a = line.toCharArray();
+        String str = "";
+        if (line.length() == 1) {
+            str += nums[a[0] - '0'] + "元整";
+            return str;
         }
-        StringBuilder sb = new StringBuilder();
-        int u1 = stack.size(); //大单位
-        while (!stack.isEmpty()) {
-            String pop = stack.pop();
-            // 2050 2005 2500 2525
-            char[] temp = pop.toCharArray();
-            int u = pop.length() - 1; //小单位
-            for (int i = 0; i < temp.length; i++) {
-                int t = Integer.valueOf(temp[i] + "");
-                boolean flag = false; //百位为0 十位不为0
-                if (i == temp.length - 1 && t == 0) {
-                    continue;
-                } else if (i == temp.length - 1) {
-                    sb.append(nums[t]);
-                } else if (t == 0 && i == 1) {
-                    sb.append(nums[0]);
-                } else if (t == 0 && i == 2) {
-                    continue;
-                } else {
-                    sb.append(nums[t] + units[u]);
-                }
-                u--;
-            }
-            if (u1 > 1) {
-                sb.append(units[2 + u1]);
-            }
-            u1--;
+        for (int i = 0; i < a.length; i++) {
+            str += nums[a[i] - '0'];
+            str += units[a.length - i - 1];
         }
-        return sb.toString();
+        str += "元整";
+        str = str.replaceAll("拾零", "拾")
+                .replaceAll("零拾", "零")
+                .replaceAll("零佰", "零")
+                .replaceAll("零仟", "零")
+                .replaceAll("零万", "万");
+        for (int i = 0; i < 6; i++) {
+            str = str.replaceAll("零零", "零")
+                    .replaceAll("零万", "万")
+                    .replaceAll("零亿", "亿")
+                    .replaceAll("零零", "零")
+                    .replaceAll("零元", "元");
+        }
+
+
+        return str;
     }
 
     public static void main(String[] args) {
-        System.out.println(solution("65430004540"));
+        System.out.println(solution("60133004540"));
+        System.out.println(solution("0"));
     }
 }
