@@ -1,0 +1,14 @@
+
+
+
+dependencies {
+//    compile project(':JavaNotes')
+    compile 'io.netty:netty-all:4.1.6.Final'
+    compile 'com.alibaba:fastjson:1.2.29'
+    
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+

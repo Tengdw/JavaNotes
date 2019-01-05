@@ -1,0 +1,11 @@
+//group 'com.tengdw'
+//version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    
+}

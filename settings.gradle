@@ -1,0 +1,6 @@
+rootProject.name = 'JavaNotes'
+include 'NettyChatroom'
+include 'Java8InAction'
+include 'EffectiveJava'
+include 'ConcurrentProgramDesign'
+include 'Algorithm'
