@@ -1,14 +1,12 @@
 package com.tengdw.DataStructure;
 
+import com.tengdw.DataStructure.HashTable.HashTable;
 import com.tengdw.DataStructure.UnionFind.UF;
 import com.tengdw.DataStructure.UnionFind.UnionFind;
 import com.tengdw.DataStructure.heap.MaxHeap;
 import com.tengdw.DataStructure.map.BSTMap;
 import com.tengdw.DataStructure.set.BSTSet;
-import com.tengdw.DataStructure.tree.AVLTree;
-import com.tengdw.DataStructure.tree.BST;
-import com.tengdw.DataStructure.tree.SegmentTree;
-import com.tengdw.DataStructure.tree.Trie;
+import com.tengdw.DataStructure.tree.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -224,5 +222,80 @@ public class main {
             System.out.println("AVL: " + time + " s");
         }
 
+    }
+
+    @Test
+    public void hashTableTest() {
+        System.out.println("Pride and Prejudice");
+
+        ArrayList<String> words = new ArrayList<>();
+        if(FileOperation.readFile("D:\\IdeaProjects\\JavaNotes\\Algorithm\\src\\main\\java\\com\\tengdw\\DataStructure\\pride-and-prejudice.txt", words)) {
+            System.out.println("Total words: " + words.size());
+
+            // Collections.sort(words);
+
+
+            // Test AVL
+            long startTime = System.nanoTime();
+
+            AVLTree<String, Integer> avl = new AVLTree<>();
+            for (String word : words) {
+                if (avl.contains(word))
+                    avl.set(word, avl.get(word) + 1);
+                else
+                    avl.add(word, 1);
+            }
+
+            for(String word: words)
+                avl.contains(word);
+
+            long endTime = System.nanoTime();
+
+            double time = (endTime - startTime) / 1000000000.0;
+            System.out.println("AVL: " + time + " s");
+
+
+            // Test RBTree
+            startTime = System.nanoTime();
+
+            RBTree<String, Integer> rbt = new RBTree<>();
+            for (String word : words) {
+                if (rbt.contains(word))
+                    rbt.set(word, rbt.get(word) + 1);
+                else
+                    rbt.add(word, 1);
+            }
+
+            for(String word: words)
+                rbt.contains(word);
+
+            endTime = System.nanoTime();
+
+            time = (endTime - startTime) / 1000000000.0;
+            System.out.println("RBTree: " + time + " s");
+
+
+            // Test HashTable
+            startTime = System.nanoTime();
+
+            // HashTable<String, Integer> ht = new HashTable<>();
+            HashTable<String, Integer> ht = new HashTable<>();
+            for (String word : words) {
+                if (ht.contains(word))
+                    ht.set(word, ht.get(word) + 1);
+                else
+                    ht.add(word, 1);
+            }
+
+            for(String word: words)
+                ht.contains(word);
+
+            endTime = System.nanoTime();
+
+            time = (endTime - startTime) / 1000000000.0;
+            System.out.println("HashTable: " + time + " s");
+        }
+
+        System.out.println();
     }
 }

@@ -1,4 +1,8 @@
 /target/
 /.idea/
+/out/
+/.gradle/
+/build/
 *.class
 *.iml
+*.log
