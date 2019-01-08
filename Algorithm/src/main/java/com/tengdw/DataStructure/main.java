@@ -5,6 +5,7 @@ import com.tengdw.DataStructure.UnionFind.UF;
 import com.tengdw.DataStructure.UnionFind.UnionFind;
 import com.tengdw.DataStructure.heap.MaxHeap;
 import com.tengdw.DataStructure.map.BSTMap;
+import com.tengdw.DataStructure.queue.LoopQueue;
 import com.tengdw.DataStructure.set.BSTSet;
 import com.tengdw.DataStructure.tree.*;
 import org.junit.Test;
@@ -297,5 +298,13 @@ public class main {
         }
 
         System.out.println();
+    }
+
+    @Test
+    public void testLoopQueue() {
+        LoopQueue<Integer> loopQueue = new LoopQueue<>(3);
+        loopQueue.enqueue(1);
+        loopQueue.enqueue(2);
+        loopQueue.enqueue(3);
     }
 }
