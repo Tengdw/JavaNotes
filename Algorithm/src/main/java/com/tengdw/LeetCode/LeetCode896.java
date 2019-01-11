@@ -12,16 +12,12 @@ import org.junit.Test;
 public class LeetCode896 {
     class Solution {
         public boolean isMonotonic(int[] A) {
-            int len = A.length - 1;
-            if (len == 0) return true;
-            int l = 0;
-            int flag = A[0] > A[len] ? 1 : -1;
-            while (l * 2 <= len) {
-                if (l * 2 == len)
-                    return (A[l] > A[l+1] ? 1 : -1) == flag;
-                int temp = A[l] > A[len - l] ? 1 : -1;
+            if (A.length == 1) return true;
+            int flag = A[A.length - 1] > A[0] ? 1 : -1;
+            for (int i = 1; i < A.length; i++) {
+                if (A[i] == A[i - 1]) continue;
+                int temp = A[i] > A[i - 1] ? 1 : -1;
                 if (temp != flag) return false;
-                l++;
             }
             return true;
         }
@@ -29,7 +25,7 @@ public class LeetCode896 {
 
     @Test
     public void test() {
-        int[] A = {9};
+        int[] A = {6,5,4,4};
         boolean monotonic = new Solution().isMonotonic(A);
         System.out.println(monotonic);
     }
