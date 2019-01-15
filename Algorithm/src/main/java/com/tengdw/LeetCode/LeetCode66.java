@@ -14,22 +14,23 @@ import java.util.Arrays;
 public class LeetCode66 {
     class Solution {
         public int[] plusOne(int[] digits) {
-            int len = digits.length - 1;
-            int i = len;
-            while (i >= 0) {
-                if (digits[i] + 1 < 10) {
+            int len = digits.length;
+            for (int i = len - 1; i >= 0; i--) {
+                if (digits[i] < 9) {
                     digits[i]++;
+                    return digits;
                 }
-                if (digits[i] + 1 < 10)
-                i--;
+                digits[i] = 0;
             }
-            return digits;
+            int[] ans = new int[len + 1];
+            ans[0] = 1;
+            return ans;
         }
     }
 
     @Test
     public void test() {
-        int[] digits = {9, 9, 9};
+        int[] digits = {9};
         int[] result = new Solution().plusOne(digits);
         System.out.println(Arrays.toString(result));
     }
